@@ -1,1 +1,1 @@
-# photo-sharing-app
+# Photo Storing App
