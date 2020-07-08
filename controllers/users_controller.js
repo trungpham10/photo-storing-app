@@ -9,8 +9,7 @@ users.get("/new", (req, res) => {
 });
 
 users.post("/", (req, res) => {
-  console.log("flag");
-  console.log(req.body);
+  console.log(req.body.username);
   req.body.password = bcrypt.hashSync(
     req.body.password,
     bcrypt.genSaltSync(10)

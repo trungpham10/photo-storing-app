@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
-const PORT = 4000;
+require("dotenv").config();
+const PORT = process.env.PORT;
+const mongodbURI = process.env.MONGODBURI;
 const mongoose = require("mongoose");
+const session = require("express-session");
 
-mongoose.connect("mongodb://localhost:27017/photo_users", {
+mongoose.connect(mongodbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -12,8 +15,17 @@ mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
 
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+const sessionsController = require("./controllers/sessions_controller.js");
+app.use("/sessions", sessionsController);
 
 const userController = require("./controllers/users_controller.js");
 app.use("/users", userController);
