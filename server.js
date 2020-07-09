@@ -36,6 +36,10 @@ app.get("/", (req, res) => {
   res.render("index.ejs", { currentUser: req.session.currentUser });
 });
 
+app.get("/add", (req, res) => {
+  res.render("add.ejs");
+});
+
 app.listen(PORT, () => {
   console.log("Listening at port", PORT);
 });
