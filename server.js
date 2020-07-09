@@ -31,7 +31,7 @@ const userController = require("./controllers/users_controller.js");
 app.use("/users", userController);
 
 app.get("/photos", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", { currentUser: req.session.currentUser });
 });
 
 app.listen(PORT, () => {

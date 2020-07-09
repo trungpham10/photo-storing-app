@@ -10,6 +10,10 @@
       <button><a href="/sessions/new">Log in</a></button>
       <button><a href="/users/new">Sign up</a></button>
     </nav>
-    <h1>Hi, Trung!</h1>
+    <% if (currentUser) { %>
+    <h1>Hi, <%= currentUser.username %>!</h1>
+    <% } else { %>
+    <h1>Hi, welcome to Moments!</h1>
+    <% } %>
   </body>
 </html>
