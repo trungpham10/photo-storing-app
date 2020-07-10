@@ -9,6 +9,13 @@
     <button><a href="/">Back</a></button>
     <h1>Add a Moment</h1>
     <form action="" method="POST">
+      Username:
+      <select name="userID">
+        <option value="<%= currentUser._id %>"
+          ><%= currentUser.username %></option
+        >
+      </select>
+      <br />
       Upload photo: <input type="file" name="img" /><br />
       Title: <input type="text" name="title" placeholder="Title" /><br />
       Description:

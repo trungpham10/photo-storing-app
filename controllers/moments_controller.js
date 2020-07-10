@@ -13,15 +13,19 @@ moments.get("/add", (req, res) => {
 });
 
 moments.post("/add", (req, res) => {
-  //   console.log(req.session.currentUser._id);
-  //   console.log(req.body);
-  Moment.create(req.body, (err, createdMoment) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("moment created: ", createdMoment);
-      res.redirect("/");
-    }
+  User.findById(req.body.userID, (err, foundUser) => {
+    Moment.create(req.body, (err, createdMoment) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log("moment created: ", createdMoment);
+        foundUser.moments.push(createdMoment);
+        foundUser.save((err, data) => {
+          res.redirect("/");
+        });
+      }
+    });
   });
 });
 
