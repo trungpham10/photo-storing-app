@@ -29,4 +29,8 @@ moments.post("/add", (req, res) => {
   });
 });
 
+moments.get("/:id", (req, res) => {
+  res.render("show.ejs");
+});
+
 module.exports = moments;

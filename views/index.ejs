@@ -12,7 +12,16 @@
     </form>
     <h1>Hi, <%= currentUser.username %>!</h1>
     <button><a href="/add">Add a Moment</a></button>
-    <% } else { %>
+    <% for (let i in currentUser.moments) { %>
+    <div>
+      <img src="<%= currentUser.moments[i].img %>" />
+      <p>
+        <a href="/<%= currentUser.moments[i]._id %>"
+          ><%= currentUser.moments[i].title %></a
+        >
+      </p>
+    </div>
+    <% } %> <% } else { %>
     <nav>
       <button><a href="/sessions/new">Log in</a></button>
       <button><a href="/users/new">Sign up</a></button>
