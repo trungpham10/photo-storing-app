@@ -37,4 +37,13 @@ moments.get("/:id", (req, res) => {
   })
 });
 
+moments.get("/:id/edit", (req, res) => {
+  Moment.findById(req.params.id, (err, foundMoment) => {
+    res.render("edit.ejs", {
+      moment: foundMoment,
+      currentUser: req.session.currentUser
+    });
+  })
+})
+
 module.exports = moments;

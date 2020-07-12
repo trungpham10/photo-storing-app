@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+</head>
+
+<body>
+    <button><a href="/">Back to index</a></button>
+    <h1>Edit a Moment</h1>
+    <form action="/" method="POST">
+        Username:
+        <select name="userID">
+            <option value="<%= currentUser._id %>"><%= currentUser.username %></option>
+        </select>
+        <br />
+        Upload photo: <input type="text" name="img" value="<%= moment.img %>" /><br />
+        Title: <input type="text" name="title" placeholder="Title" value="<%= moment.title %>" /><br />
+        Description:
+        <textarea type="text" name="description" placeholder="Description"><%= moment.description %></textarea><br />
+        <input type="submit" value="Upload" />
+    </form>
+</body>
+
+</html>
