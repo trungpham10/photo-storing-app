@@ -12,8 +12,12 @@ const isAuthenticated = (req, res, next) => {
 };
 
 moments.get("/", isAuthenticated, (req, res) => {
-  console.log(req.session.currentUser);
-  res.render("index.ejs", { currentUser: req.session.currentUser });
+  Moment.find({}, (err, allMoments) => {
+    res.render("index.ejs", {
+      moments: allMoments,
+      currentUser: req.session.currentUser,
+    });
+  });
 });
 
 moments.get("/add", (req, res) => {
