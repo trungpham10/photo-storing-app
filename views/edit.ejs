@@ -10,7 +10,7 @@
 <body>
     <button><a href="/">Back to index</a></button>
     <h1>Edit a Moment</h1>
-    <form action="/" method="POST">
+    <form action="/<%= moment.id %>?_method=PUT" method="POST">
         Username:
         <select name="userID">
             <option value="<%= currentUser._id %>"><%= currentUser.username %></option>

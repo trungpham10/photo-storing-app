@@ -46,4 +46,15 @@ moments.get("/:id/edit", (req, res) => {
   })
 })
 
+moments.put("/:id", (req, res) => {
+  console.log(req.body);
+  Moment.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    (err, updatedMoment) => {
+      res.redirect(`/${req.params.id}`)
+    }
+  )
+})
+
 module.exports = moments;

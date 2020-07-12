@@ -7,7 +7,6 @@ const mongodbURI = process.env.MONGODBURI;
 const mongoose = require("mongoose");
 const session = require("express-session");
 const methodOverride = require("method-override");
-const bodyParser = require("body-parser");
 
 mongoose.connect(mongodbURI, {
   useNewUrlParser: true,
