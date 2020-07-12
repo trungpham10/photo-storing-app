@@ -30,7 +30,7 @@ moments.post("/add", (req, res) => {
 });
 
 moments.get("/:id", (req, res) => {
-  res.render("show.ejs");
+  res.send("show page");
 });
 
 module.exports = moments;

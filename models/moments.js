@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const momentSchema = Schema({
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
+  img: String,
   title: String,
   description: String,
 });
