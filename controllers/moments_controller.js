@@ -53,7 +53,9 @@ moments.put("/:id", (req, res) => {
       User.findOne({ "moments._id": req.params.id }, (err, foundUser) => {
         foundUser.moments.id(req.params.id).remove();
         foundUser.moments.push(updatedMoment);
-        res.redirect(`/${req.params.id}`);
+        foundUser.save((err, data) => {
+          res.redirect("/" + req.params.id);
+        });
       });
     }
   );
