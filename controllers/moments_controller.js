@@ -22,7 +22,7 @@ moments.post("/add", (req, res) => {
         console.log("moment created: ", createdMoment);
         foundUser.moments.push(createdMoment);
         foundUser.save((err, data) => {
-          res.redirect("/");
+          res.render("/");
         });
       }
     });
@@ -30,7 +30,11 @@ moments.post("/add", (req, res) => {
 });
 
 moments.get("/:id", (req, res) => {
-  res.send("show page");
+  Moment.findById(req.params.id, (err, foundMoment) => {
+    res.render("show.ejs", {
+      moment: foundMoment
+    });
+  })
 });
 
 module.exports = moments;
