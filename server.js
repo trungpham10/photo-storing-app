@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 require("dotenv").config();
 const PORT = process.env.PORT;
-const mongodbURI = process.env.MONGODBURI;
+const mongodbURI = process.env.MONGODB_URI;
 const mongoose = require("mongoose");
 const session = require("express-session");
 const methodOverride = require("method-override");
