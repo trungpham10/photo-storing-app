@@ -2,6 +2,9 @@ const express = require("express");
 const moments = express.Router();
 const User = require("../models/users");
 const Moment = require("../models/moments");
+const fileUpload = require("express-fileupload");
+
+moments.use(fileUpload());
 
 const isAuthenticated = (req, res, next) => {
   if (req.session.currentUser) {
@@ -10,6 +13,30 @@ const isAuthenticated = (req, res, next) => {
     res.redirect("/sessions/new");
   }
 };
+
+moments.get("/upload", isAuthenticated, function (req, res) {
+  res.render("upload.ejs");
+});
+
+moments.post("/upload", isAuthenticated, function (req, res) {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send("No files were uploaded.");
+  }
+
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.sampleFile;
+  console.log(sampleFile.data);
+
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv(
+    "/Users/trungpham/dev/photo-storing-app/controllers/uploaded/test.JPG",
+    function (err) {
+      if (err) return res.status(500).send(err);
+
+      res.send("File uploaded!");
+    }
+  );
+});
 
 moments.get("/", isAuthenticated, (req, res) => {
   Moment.find({}, (err, allMoments) => {
@@ -27,12 +54,9 @@ moments.get("/add", (req, res) => {
 moments.post("/", isAuthenticated, (req, res) => {
   User.findById(req.body.userID, (err, foundUser) => {
     Moment.create(req.body, (err, createdMoment) => {
-      console.log("moment created: ", createdMoment);
       foundUser.moments.push(createdMoment);
       foundUser.save((err, data) => {
-        console.log("flag");
-        console.log(data);
-        res.redirect("/", { currentUser: data });
+        res.redirect("/");
       });
     });
   });

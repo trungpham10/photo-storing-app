@@ -1,0 +1,16 @@
+body {
+  background-color: azure;
+}
+
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-self: center;
+}
+
+.item {
+  width: fit-content;
+  text-align: center;
+  margin: 35px;
+}

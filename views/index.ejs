@@ -3,24 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="/css/main.css" />
     <title>Index Page</title>
   </head>
 
   <body>
     <% if (currentUser) { %>
-    <form action="/sessions?_method=DELETE" method="POST">
-      <input type="submit" value="Log out" />
-    </form>
+    <p>
+      <button><a href="/add">New Moment</a></button>
+      <form action="/sessions?_method=DELETE" method="POST">
+        <input type="submit" value="Log out" />
+      </form>
+    </p>
     <h1>Hi, <%= currentUser.username %>!</h1>
-    <button><a href="/add">Add a Moment</a></button>
-    <% for (let i in moments) { %>
-    <div>
-      <img src="<%= moments[i].img %>" width="500" height="500" />
-      <p>
-        <a href="/<%= moments[i]._id %>"><%= moments[i].title %></a>
-      </p>
+    <div class="container">
+      <% for (let i in moments) { %>
+      <div class="item">
+        <img src="<%= moments[i].img %>" width="400" height="400" />
+        <p>
+          <a href="/<%= moments[i]._id %>"><%= moments[i].title %></a>
+        </p>
+      </div>
+      <% } %>
     </div>
-    <% } %> <% } else { %>
+    <% } else { %>
     <nav>
       <button><a href="/sessions/new">Log in</a></button>
       <button><a href="/users/new">Sign up</a></button>
