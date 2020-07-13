@@ -41,7 +41,7 @@ moments.post("/upload", isAuthenticated, function (req, res) {
   });
 });
 
-moments.get("/", isAuthenticated, (req, res) => {
+moments.get("/", (req, res) => {
   Moment.find({}, (err, allMoments) => {
     res.render("index.ejs", {
       moments: allMoments,
