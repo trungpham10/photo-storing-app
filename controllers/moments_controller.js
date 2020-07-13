@@ -3,6 +3,10 @@ const moments = express.Router();
 const User = require("../models/users");
 const Moment = require("../models/moments");
 const fileUpload = require("express-fileupload");
+require("dotenv").config();
+const UPLOADED_IMG_FOLDER = process.env.UPLOADED_IMG_FOLDER;
+
+console.log(UPLOADED_IMG_FOLDER);
 
 moments.use(fileUpload());
 
@@ -25,17 +29,16 @@ moments.post("/upload", isAuthenticated, function (req, res) {
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.sampleFile;
-  console.log(sampleFile.data);
+  console.log(sampleFile);
 
   // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv(
-    "/Users/trungpham/dev/photo-storing-app/controllers/uploaded/test.JPG",
-    function (err) {
-      if (err) return res.status(500).send(err);
+  sampleFile.mv(`${UPLOADED_IMG_FOLDER}${sampleFile.name}`, function (err) {
+    if (err) return res.status(500).send(err);
 
-      res.send("File uploaded!");
-    }
-  );
+    res.send(`
+        <img src='/controllers/uploaded/${sampleFile.name}' width="500" height="500"> 
+      `);
+  });
 });
 
 moments.get("/", isAuthenticated, (req, res) => {

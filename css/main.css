@@ -6,11 +6,18 @@ body {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-self: center;
 }
 
 .item {
   width: fit-content;
   text-align: center;
-  margin: 35px;
+  margin: 10px;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.showItem {
+  text-align: center;
 }
