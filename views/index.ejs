@@ -9,11 +9,9 @@
 
   <body>
     <% if (currentUser) { %>
-    <p>
-      <form action="/sessions?_method=DELETE" method="POST">
-        <input type="submit" value="Log out" />
-      </form>
-    </p>
+    <form action="/sessions?_method=DELETE" method="POST">
+      <input type="submit" value="Log out" />
+    </form>
     <div class="topDisplay">
       <h1>Hi, <%= currentUser.username %>!</h1>
       <button><a href="/add">New Moment</a></button>
