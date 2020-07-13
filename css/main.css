@@ -2,10 +2,16 @@ body {
   background-color: azure;
 }
 
+.topDisplay {
+  text-align: center;
+}
+
 .container {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 20px;
+  margin-left: 70px;
 }
 
 .item {

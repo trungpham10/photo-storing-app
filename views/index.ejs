@@ -10,12 +10,14 @@
   <body>
     <% if (currentUser) { %>
     <p>
-      <button><a href="/add">New Moment</a></button>
       <form action="/sessions?_method=DELETE" method="POST">
         <input type="submit" value="Log out" />
       </form>
     </p>
-    <h1>Hi, <%= currentUser.username %>!</h1>
+    <div class="topDisplay">
+      <h1>Hi, <%= currentUser.username %>!</h1>
+      <button><a href="/add">New Moment</a></button>
+    </div>
     <div class="container">
       <% for (let i in moments) { %>
       <div class="item">
