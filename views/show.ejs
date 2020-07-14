@@ -12,7 +12,12 @@
       <p>
         <button><a href="/">Back to index</a></button><br />
       </p>
-      <img src="<%= moment.img %>" width="500" height="500" />
+      <img
+        src=" <% if (moment.img.split('').includes('/')) { %> <%=moment.img%>
+      <% } else { %> /controllers/uploaded/<%=moment.img%> <% } %> "
+        width="500"
+        height="500"
+      />
       <h3><%= moment.title %></h3>
       <p class="moment-description"><%= moment.description %></p>
       <button><a href="/<%= moment._id %>/edit">Edit</a></button>
