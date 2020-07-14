@@ -19,7 +19,15 @@
     <div class="container">
       <% for (let i in moments) { %>
       <div class="item">
+        <% if (moments[i].img.split("").includes("/")) { %>
         <img src="<%= moments[i].img %>" width="400" height="400" />
+        <% } else { %>
+        <img
+          src="/controllers/uploaded/<%= moments[i].img %>"
+          width="400"
+          height="400"
+        />
+        <% } %>
         <p>
           <a href="/<%= moments[i]._id %>"><%= moments[i].title %></a>
         </p>

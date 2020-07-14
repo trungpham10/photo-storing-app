@@ -10,7 +10,13 @@
   <body>
     <button><a href="/">Back</a></button>
     <h1>Add a Moment</h1>
-    <form action="/" method="POST">
+    <form
+      ref="uploadForm"
+      id="uploadForm"
+      action="/"
+      method="POST"
+      encType="multipart/form-data"
+    >
       Username:
       <select name="userID">
         <option value="<%= currentUser._id %>"
@@ -19,12 +25,8 @@
       </select>
       <br />
       Upload photo:
-      <input
-        type="text"
-        name="img"
-        id="img"
-        placeholder="Image hyperlink"
-      /><br />
+      <input type="text" name="img" id="img" placeholder="Image hyperlink" /> or
+      <input type="file" name="uploadFile" /><br />
       Title:
       <input type="text" name="title" id="title" placeholder="Title" /><br />
       Description:

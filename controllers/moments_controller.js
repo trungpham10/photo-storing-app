@@ -55,6 +55,16 @@ moments.get("/add", (req, res) => {
 });
 
 moments.post("/", isAuthenticated, (req, res) => {
+  // process image
+  if (req.files.uploadFile) {
+    let uploadFile = req.files.uploadFile;
+    req.body.img = req.files.uploadFile.name;
+
+    uploadFile.mv(`${UPLOADED_IMG_FOLDER}${uploadFile.name}`, function (err) {
+      if (err) return res.status(500).send(err);
+    });
+  }
+
   User.findById(req.body.userID, (err, foundUser) => {
     Moment.create(req.body, (err, createdMoment) => {
       foundUser.moments.push(createdMoment);
