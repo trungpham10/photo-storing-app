@@ -9,10 +9,12 @@
 
   <body>
     <div class="showItem">
-      <button><a href="/">Back to index</a></button><br />
+      <p>
+        <button><a href="/">Back to index</a></button><br />
+      </p>
       <img src="<%= moment.img %>" width="500" height="500" />
       <h3><%= moment.title %></h3>
-      <p><%= moment.description %></p>
+      <p class="moment-description"><%= moment.description %></p>
       <button><a href="/<%= moment._id %>/edit">Edit</a></button>
       <form action="/<%= moment.id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete" />
