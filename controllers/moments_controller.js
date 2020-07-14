@@ -96,6 +96,16 @@ moments.get("/:id/edit", isAuthenticated, (req, res) => {
 });
 
 moments.put("/:id", isAuthenticated, (req, res) => {
+  // process image
+  if (req.files.uploadFile) {
+    let uploadFile = req.files.uploadFile;
+    req.body.img = req.files.uploadFile.name;
+
+    uploadFile.mv(`${UPLOADED_IMG_FOLDER}${uploadFile.name}`, function (err) {
+      if (err) return res.status(500).send(err);
+    });
+  }
+
   Moment.findByIdAndUpdate(
     req.params.id,
     req.body,
