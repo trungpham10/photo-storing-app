@@ -56,7 +56,7 @@ moments.get("/add", (req, res) => {
 
 moments.post("/", isAuthenticated, (req, res) => {
   // process image
-  if (req.files.uploadFile) {
+  if (req.files) {
     let uploadFile = req.files.uploadFile;
     req.body.img = req.files.uploadFile.name;
 
