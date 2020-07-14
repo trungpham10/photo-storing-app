@@ -97,7 +97,7 @@ moments.get("/:id/edit", isAuthenticated, (req, res) => {
 
 moments.put("/:id", isAuthenticated, (req, res) => {
   // process image
-  if (req.files.uploadFile) {
+  if (req.files) {
     let uploadFile = req.files.uploadFile;
     req.body.img = req.files.uploadFile.name;
 
