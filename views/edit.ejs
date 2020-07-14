@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="/css/main.css" />
     <title>Edit Page</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <button><a href="/">Back to index</a></button>
     <h1>Edit a Moment</h1>
     <form action="/<%= moment.id %>?_method=PUT" method="POST">
-        Username:
-        <select name="userID">
-            <option value="<%= currentUser._id %>"><%= currentUser.username %></option>
-        </select>
-        <br />
-        Upload photo: <input type="text" name="img" value="<%= moment.img %>" /><br />
-        Title: <input type="text" name="title" placeholder="Title" value="<%= moment.title %>" /><br />
-        Description:
-        <textarea type="text" name="description" placeholder="Description"><%= moment.description %></textarea><br />
-        <input type="submit" value="Upload" />
+      Username:
+      <select name="userID">
+        <option value="<%= currentUser._id %>"
+          ><%= currentUser.username %></option
+        >
+      </select>
+      <br />
+      Upload photo:
+      <input type="text" name="img" id="img" value="<%= moment.img %>" /><br />
+      Title:
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title"
+        value="<%= moment.title %>"
+      /><br />
+      Description:
+      <textarea type="text" name="description" placeholder="Description">
+<%= moment.description %></textarea
+      ><br />
+      <input type="submit" value="Submit" />
     </form>
-</body>
-
+  </body>
 </html>
