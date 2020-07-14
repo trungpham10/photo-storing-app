@@ -27,3 +27,13 @@ img {
 .showItem {
   text-align: center;
 }
+
+textarea {
+  width: 200px;
+  height: 100px;
+}
+
+#img,
+#title {
+  width: 200px;
+}
